@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>植物空气</title>
+    <link rel="icon" href="C:\Users\29683\Pictures\Screenshots\图片1.png" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .logo {
+            padding: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo h1 {
+            color: #2c9e2c;
+            font-size: 2.2rem;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        nav {
+            background-color: #fff;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            padding: 15px 0;
+            display: block;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #2c9e2c;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background-color: #2c9e2c;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            height: 600px;
+            background: url('https://i.imgs.ovh/2025/03/23/yTxXq.jpeg');
+            background-size: contain;
+            filter: brightness(1.2); /* 调整亮度 */
+            height: 100vh; 
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #2c9e2c;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: #228522;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 2.2rem;
+            color: #2c9e2c;
+            font-weight: 700;
+        }
+
+        .project-intro {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .intro-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .intro-text h3 {
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 1.5rem;
+        }
+
+        .intro-text p {
+            margin-bottom: 15px;
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .intro-timeline {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .timeline-date {
+            width: 100px;
+            background-color: #f5f7fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .timeline-desc {
+            flex: 1;
+            padding: 15px;
+            color: #666;
+        }
+
+        .tech-advantages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .advantage-item {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .advantage-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .advantage-item h3 {
+            color: #2c9e2c;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .advantage-item p {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .application-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .application-item {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .application-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .application-item h3 {
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 1.3rem;
+        }
+
+        .application-item p {
+            color: #666;
+            font-size: 1rem;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .team-members {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .team-member {
+            text-align: center;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .member-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            background-color: #eee;
+            overflow: hidden;
+        }
+
+        .member-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        .member-role {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .member-bio {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        footer {
+            background-color: #212529;
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: #2c9e2c;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #aaa;
+            margin-bottom: 10px;
+            display: block;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #2c9e2c;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        .chart-container {
+            margin: 40px 0;
+            height: 950px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chart-placeholder {
+            width: 100%; /* 设置宽度为100%以填充容器 */
+            height: 100%; /* 设置高度为100%以填充容器 */
+            background-image: url('http://m.xincailiao.com/upload/202006/02/202006021901422689.jpg'); /* 替换为实际图片路径 */
+            background-size: contain; /* 按比例缩放图片以完全显示 */
+            background-position: center; /* 图片居中 */
+            background-repeat: no-repeat; /* 防止图片重复 */
+            border-radius: 10px; /* 保持与父容器相同的圆角 */
+        }
+        @media (max-width: 768px) {
+            /* 导航栏调整 */
+            .nav-links {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-links li {
+                margin: 0;
+                margin-bottom: 10px;
+            }
+
+            /* Hero区域调整 */
+            .hero {
+                height: 500px;
+            }
+
+            .hero-content h2 {
+                font-size: 2.2rem;
+            }
+
+            /* 项目介绍调整 */
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .btn {
+                padding: 12px 30px;
+            }
+
+            /* 网格布局调整 */
+            .tech-advantages,
+            .application-grid,
+            .team-members,
+            .awards-list {
+                grid-template-columns: 1fr;
+            }
+
+            /* 表单调整 */
+            .form-group input,
+            .form-group textarea {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* 新增鼠标悬停动画 */
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+        
+        /* 媒体查询 - 手机适配 */
+        @media (max-width: 768px) {
+            /* 在手机端隐藏导航栏 */
+            nav {
+                display: none;
+            }
+
+            /* 其他手机端调整 */
+            .hero {
+                height: 500px;
+            }
+
+            .hero-content h2 {
+                font-size: 2.2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .btn {
+                padding: 12px 30px;
+            }
+
+            /* 网格布局调整 */
+            .tech-advantages,
+            .application-grid,
+            .team-members,
+            .awards-list {
+                grid-template-columns: 1fr;
+            }
+
+            /* 表单调整 */
+            .form-group input,
+            .form-group textarea {
+                font-size: 0.9rem;
+            }
+        }
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* 奖项样式 */
+        .awards-section {
+            background-color: #f8f9fa;
+            padding: 40px 0;
+            margin: 40px 0;
+        }
+
+        .awards-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .awards-title {
+            text-align: center;
+            font-size: 1.8rem;
+            color: #2c9e2c;
+            margin-bottom: 30px;
+        }
+
+        .awards-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .award-item {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .award-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .award-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .award-desc {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .award-date {
+            color: #999;
+            font-size: 0.8rem;
+            margin-top: 10px;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>植物空气——气凝胶创新引领建筑行业</h1>
+            </div>
+        </div>
+        <nav>
+            <div class="container">
+                <ul class="nav-links">
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#project">项目介绍</a></li>
+                    <li><a href="#tech">技术优势</a></li>
+                    <li><a href="#application">应用场景</a></li>
+                    <li><a href="#team">团队与荣誉</a></li>
+                    <li><a href="#contact">联系我们</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <a href="#project" class="btn"  style="margin-top: 500px;">了解更多</a>
+    </section>
+
+    <section id="project">
+        <div class="container">
+            <h2 class="section-title">项目介绍</h2>
+            <div class="project-intro">
+                <div class="intro-text">
+                    <h3>项目背景</h3>
+                    <p>在国家"双碳"战略的推动下，建筑行业节能减排需求日益增长。传统建筑材料已无法满足行业高质量发展趋势，政策鼓励使用新型环保材料，推动行业绿色转型。气凝胶材料以其卓越的性能，成为建筑节能领域的革命性材料。</p>
+                    
+                    <h3>项目目标</h3>
+                    <p>推动气凝胶材料在建筑领域的广泛应用，助力国家"双碳"战略，实现建筑行业的绿色转型，引领建筑行业高质量发展。</p>
+                </div>
+                <div class="intro-timeline">
+                    <h3>项目进展</h3>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2022年8月</div>
+                        <div class="timeline-desc">项目启动</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2022年11月</div>
+                        <div class="timeline-desc">技术初步研发</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2023年10月</div>
+                        <div class="timeline-desc">中试生产</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2023年12月</div>
+                        <div class="timeline-desc">产品优化</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2024年3月</div>
+                        <div class="timeline-desc">市场推广</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2024年5月</div>
+                        <div class="timeline-desc">规模化生产</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tech">
+        <div class="container">
+            <h2 class="section-title">技术优势</h2>
+            <div class="tech-advantages">
+                <div class="advantage-item">
+                    <h3>超低导热系数</h3>
+                    <p>气凝胶材料具有纳米级孔隙结构，导热系数低至0.013W/(m·K)，显著提升建筑保温性能。</p>
+                </div>
+                <div class="advantage-item">
+                    <h3>高耐久性</h3>
+                    <p>通过界面增强技术，提高气凝胶的机械强度，使用寿命长达20年以上。</p>
+                </div>
+                <div class="advantage-item">
+                    <h3>低碳闭环</h3>
+                    <p>从生产到回收的全生命周期低碳特性，生物基原料利用率高达95%，干燥能耗降低52%。</p>
+                </div>
+                <div class="advantage-item">
+                    <h3>连续化制备工艺</h3>
+                    <p>通过自动化设备和优化工艺参数，实现气凝胶的连续化生产，降低生产成本。</p>
+                </div>
+                <div class="advantage-item">
+                    <h3>环保性能</h3>
+                    <p>气凝胶材料在LCA全周期中展现出低碳、高效、长寿命和环境友好性，推动建筑行业可持续发展。</p>
+                </div>
+                <div class="advantage-item">
+                    <h3>应用场景广泛</h3>
+                    <p>适用于建筑保温、新能源汽车、电子设备、防护装备等多个领域，具有广阔的市场前景。</p>
+                </div>
+            </div>
+            <div class="chart-container">
+                <div class="chart-placeholder"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="application">
+        <div class="container">
+            <h2 class="section-title">应用场景</h2>
+            <div class="application-grid">
+                <div class="application-item">
+                    <h3>建筑保温</h3>
+                    <p>作为隔热材料用于建筑墙体、屋顶、窗户等部位，显著提高建筑物的能源效率。</p>
+                    <p>案例：冬奥工程应用气凝胶材料，每年减少碳排放320吨。</p>
+                </div>
+                <div class="application-item">
+                    <h3>新能源汽车</h3>
+                    <p>用于电池和超级电容器的电极材料、储能设备中，提高设备的安全性和使用寿命。</p>
+                </div>
+                <div class="application-item">
+                    <h3>电子设备</h3>
+                    <p>用于电子元器件的隔热保护，延长设备使用寿命，保护人员免受高温危害。</p>
+                </div>
+                <div class="application-item">
+                    <h3>防护装备</h3>
+                    <p>用于防火服、隔热手套等防护装备中，有效保护人员免受高温危害。</p>
+                </div>
+                <div class="application-item">
+                    <h3>老旧小区改造</h3>
+                    <p>气凝胶外墙保温系统有效降低建筑能耗，节能效果达到国家一级标准，显著缩短改造周期。</p>
+                </div>
+                <div class="application-item">
+                    <h3>商业综合体</h3>
+                    <p>气凝胶材料轻质高效，施工便捷，节能效率提升30%，保温性能提升20%。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team">
+        <div class="container">
+            <h2 class="section-title">团队与荣誉</h2>
+            <div class="team-members">
+                <div class="team-member">
+                    <div class="member-photo"></div>
+                    <h3 class="member-name">张金</h3>
+                    <p class="member-role">项目负责人</p>
+                    <p class="member-bio">专业素养高，综合能力强，具有敏锐的洞察力和创新能力。参加省级科研项目1项，获互联网+省级二等奖3项，拥有国家发明专利。</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-photo"></div>
+                    <h3 class="member-name">杜同学</h3>
+                    <p class="member-role">电子信息工程专业</p>
+                    <p class="member-bio">参与省级科研创新计划，精通python等编程语言，掌握电子设备与信息系统的设计与应用。</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-photo"></div>
+                    <h3 class="member-name">曾同学</h3>
+                    <p class="member-role">机器人专业</p>
+                    <p class="member-bio">曾获校级挑战杯优秀奖，拥有2项省创计划，掌握产品工艺技术的开发和利用。</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-photo"></div>
+                    <h3 class="member-name">高同学</h3>
+                    <p class="member-role">小学教育专业</p>
+                    <p class="member-bio">参与多项科研项目，具有良好的沟通能力和团队协作能力，负责项目宣传与推广。</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-photo"></div>
+                    <h3 class="member-name">吴同学</h3>
+                    <p class="member-role">软件工程专业</p>
+                    <p class="member-bio">精通剪辑、wps等操作，从事程序的设计、应用与开发及系统维持，为项目提供技术支持。</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-photo"></div>
+                    <h3 class="member-name">付同学</h3>
+                    <p class="member-role">生物工程专业</p>
+                    <p class="member-bio">掌握生物材料研发技术，熟悉新产品开发流程，参与多项科研项目。</p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 60px; text-align: center;">
+                <h3>指导老师</h3>
+                <div class="team-members" style="margin-top: 30px;">
+                    <div class="team-member">
+                        <div class="member-photo"></div>
+                        <h3 class="member-name">张晓娟</h3>
+                        <p class="member-role">省级教学团队、校级重点学科主要成员。发表论文十余篇。参与国家级课题两项，省部级课题两项。
+                        </p>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-photo"></div>
+                        <h3 class="member-name">张所轮</h3>
+                        <p class="member-role">博士在读，研究方向：就业创业指导，教育管理，发表相关论文12篇，主持参与省市级项目11项。
+                        </p>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-photo"></div>
+                        <h3 class="member-name">郭莹</h3>
+                        <p class="member-role">参编大学生职业规划与就业指导教材，发表期刊7篇，参与河南省就业创业课题5项，河南省社科联项目4项。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 60px; text-align: center;">
+                <h3>专家顾问</h3>
+                <div class="team-members" style="margin-top: 30px;">
+                    <div class="team-member">
+                        <div class="member-photo"></div>
+                        <h3 class="member-name">徐甜甜</h3>
+                        <p class="member-role">DnA建筑事务所创始人，主持建筑师。清华大学建筑学院建筑学学士，哈佛大学设计研究学院建筑城市设计硕士；曾实践于国内多个建筑事务所。
+                        </p>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-photo"></div>
+                        <h3 class="member-name">李丛笑</h3>
+                        <p class="member-role">DnA建筑事务所创始人，主持建筑师。清华大学建筑学院建筑学学士，哈佛大学设计研究学院建筑城市设计硕士；曾实践于国内多个建筑事务所。
+                        </p>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-photo"></div>
+                        <h3 class="member-name">安文河</h3>
+                        <p class="member-role">从事基础设施项目技术管理，推行“策划驱动创效”模式，精准定位效益增长点。获得中建集团首个路桥项目鲁班奖、省部级科技进步奖5项。
+                        </p>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-photo"></div>
+                        <h3 class="member-name">陈金友</h3>
+                        <p class="member-role">科技部自然评审专家，工信部赛迪研究院高级咨询师。主要从事“云大物智链安”在工业 4.0、环境等领域解决方案的规划与设计究。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="awards-section">
+        <div class="awards-container">
+            <h2 class="awards-title">所获荣誉</h2>
+            <div class="awards-list">
+                <div class="award-item">
+                    <h3 class="award-title">国家级奖项</h3>
+                    <p class="award-desc">获国家级科研项目支持，气凝胶材料研发项目入选国家科技部重点研发计划。</p>
+                    <p class="award-date">2023年12月</p>
+                </div>
+                <div class="award-item">
+                    <h3 class="award-title">省级奖项</h3>
+                    <p class="award-desc">获省级科技进步一等奖，气凝胶材料在建筑节能领域的应用研究取得突破性进展。</p>
+                    <p class="award-date">2023年10月</p>
+                </div>
+                <div class="award-item">
+                    <h3 class="award-title">行业奖项</h3>
+                    <p class="award-desc">获建筑行业绿色创新奖，气凝胶材料被认定为建筑节能领域最具潜力的新材料。</p>
+                    <p class="award-date">2023年9月</p>
+                </div>
+                <div class="award-item">
+                    <h3 class="award-title">科研奖项</h3>
+                    <p class="award-desc">获省级自然科学二等奖，气凝胶材料的基础研究和应用开发取得重要成果。</p>
+                    <p class="award-date">2023年8月</p>
+                </div>
+                <div class="award-item">
+                    <h3 class="award-title">专利授权</h3>
+                    <p class="award-desc">获得多项国家发明专利授权，涵盖气凝胶材料的制备工艺、性能优化和应用技术。</p>
+                    <p class="award-date">2023年6月</p>
+                </div>
+                <div class="award-item">
+                    <h3 class="award-title">国际认可</h3>
+                    <p class="award-desc">在国际材料科学大会上展示气凝胶研究成果，获得国际同行的高度评价。</p>
+                    <p class="award-date">2023年5月</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">联系我们</h2>
+            <div class="contact-form">
+                <h3 style="text-align: center; margin-bottom: 30px;">在线咨询</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="name">姓名</label>
+                        <input type="text" id="name" placeholder="请输入您的姓名">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">邮箱</label>
+                        <input type="email" id="email" placeholder="请输入您的邮箱">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">电话</label>
+                        <input type="tel" id="phone" placeholder="请输入您的电话">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">留言内容</label>
+                        <textarea id="message" placeholder="请输入您的留言内容"></textarea>
+                    </div>
+                    <div style="text-align: center;">
+                        <button type="submit" class="btn">提交留言</button>
+                    </div>
+                </form>
+                <div style="text-align: center; ">
+                    <a href="#" class="btn" style="margin-top: 100px;">在线客服</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>关于我们</h3>
+                    <p>植物空气项目团队致力于气凝胶材料的研发与应用，推动建筑行业绿色转型，为实现国家"双碳"目标贡献力量。</p>
+                </div>
+                <div class="footer-section">
+                    <h3>快速链接</h3>
+                    <a href="#home">首页</a>
+                    <a href="#project">项目介绍</a>
+                    <a href="#tech">技术优势</a>
+                    <a href="#application">应用场景</a>
+                    <a href="#team">团队与荣誉</a>
+                    <a href="#contact">联系我们</a>
+                </div>
+                <div class="footer-section">
+                    <h3>合作伙伴</h3>
+                    <p>某科研机构</p>
+                    <p>某建筑集团</p>
+                    <p>某投资公司</p>
+                    <p>某高校实验室</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2025 植物空气 - 气凝胶创新引领建筑行业项目组 版权所有</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 平滑滚动效果
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
+        });
+        
+        // 滚动时的动画效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const animItems = document.querySelectorAll('.advantage-item, .application-item, .team-member, .award-item');
+            
+            function checkScroll() {
+                animItems.forEach(item => {
+                    const itemTop = item.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (itemTop < windowHeight * 0.8) {
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                    }
+                });
+            }
+            
+        // 表单提交处理
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('您的留言已提交，我们会尽快与您联系！');
+            this.reset();
+        });
+
+            // 初始样式
+            animItems.forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            });
+            
+            // 检查滚动
+            window.addEventListener('scroll', checkScroll);
+            
+            // 初始检查
+            checkScroll();
+        });
+    </script>
+</body>
+</html>    
