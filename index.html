@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>植物空气</title>
-    <link rel="icon" href="C:\Users\29683\Pictures\Screenshots\图片1.png" type="image/x-icon">
+    <link rel="icon" href="https://i.imgs.ovh/2025/03/25/yzC7r.png" type="image/x-icon">
     <style>
         * {
             margin: 0;
@@ -14,9 +14,13 @@
         }
 
         body {
-            background-color: #f5f7fa;
-            color: #333;
-            line-height: 1.6;
+            background-image: url('https://img.36krcdn.com/hsossms/20230216/v2_6dfeffbd2beb4599ba15b6c93e3c48db_oswg137283oswg692oswg389_img_000');
+            background-attachment: fixed;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: 0;
+            padding: 0;
         }
 
         header {
@@ -95,18 +99,15 @@
         }
 
         .hero {
-            height: 600px;
-            background: url('https://i.imgs.ovh/2025/03/23/yTxXq.jpeg');
-            background-size: contain;
-            filter: brightness(1.2); /* 调整亮度 */
             height: 100vh; 
-            background-size: cover;
+            background: url('https://i.imgs.ovh/2025/03/23/yTxXq.jpeg');
+            background-size: 100% 100%;
+            filter: brightness(1.2); /* 调整亮度 */
             background-position: center;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: white;
         }
 
         .hero-content h2 {
@@ -169,13 +170,13 @@
 
         .intro-text h3 {
             margin-bottom: 15px;
-            color: #333;
+            color: #fcfcfc;
             font-size: 1.5rem;
         }
 
         .intro-text p {
             margin-bottom: 15px;
-            color: #666;
+            color: white; /* 设置字体颜色为白色 */
             font-size: 1rem;
             line-height: 1.8;
         }
@@ -295,8 +296,13 @@
             height: 150px;
             border-radius: 50%;
             margin: 0 auto 20px;
-            background-color: #eee;
             overflow: hidden;
+        }
+
+        .member-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* 确保图片填满整个容器 */
         }
 
         .member-name {
@@ -367,8 +373,7 @@
         }
         .chart-container {
             margin: 40px 0;
-            height: 950px;
-            background-color: #f0f0f0;
+            height: 70vh;
             border-radius: 10px;
             display: flex;
             align-items: center;
@@ -378,8 +383,8 @@
         .chart-placeholder {
             width: 100%; /* 设置宽度为100%以填充容器 */
             height: 100%; /* 设置高度为100%以填充容器 */
-            background-image: url('http://m.xincailiao.com/upload/202006/02/202006021901422689.jpg'); /* 替换为实际图片路径 */
-            background-size: contain; /* 按比例缩放图片以完全显示 */
+            background-image: url('http://m.xincailiao.com/upload/202006/02/202006021901422689.jpg');
+            background-size: 100% 100%; /* 按比例缩放图片以完全显示 */
             background-position: center; /* 图片居中 */
             background-repeat: no-repeat; /* 防止图片重复 */
             border-radius: 10px; /* 保持与父容器相同的圆角 */
@@ -591,7 +596,7 @@
     </header>
 
     <section class="hero" id="home">
-        <a href="#project" class="btn"  style="margin-top: 500px;">了解更多</a>
+        <a href="#project" class="btn"  style="margin-top: 60vh;">了解更多</a>
     </section>
 
     <section id="project">
@@ -709,37 +714,49 @@
             <h2 class="section-title">团队与荣誉</h2>
             <div class="team-members">
                 <div class="team-member">
-                    <div class="member-photo"></div>
+                    <div class="member-photo">
+                        <img src="https://i.imgs.ovh/2025/03/25/yb1hn.jpeg">
+                    </div>
                     <h3 class="member-name">张金</h3>
                     <p class="member-role">项目负责人</p>
                     <p class="member-bio">专业素养高，综合能力强，具有敏锐的洞察力和创新能力。参加省级科研项目1项，获互联网+省级二等奖3项，拥有国家发明专利。</p>
                 </div>
                 <div class="team-member">
-                    <div class="member-photo"></div>
-                    <h3 class="member-name">杜同学</h3>
-                    <p class="member-role">电子信息工程专业</p>
+                    <div class="member-photo">
+                        <img src="https://i.imgs.ovh/2025/03/25/yzyzh.jpeg">
+                    </div>
+                    <h3 class="member-name">王同学</h3>
+                    <p class="member-role">生物科学专业</p>
                     <p class="member-bio">参与省级科研创新计划，精通python等编程语言，掌握电子设备与信息系统的设计与应用。</p>
                 </div>
                 <div class="team-member">
-                    <div class="member-photo"></div>
+                    <div class="member-photo">
+                        <img src="https://i.imgs.ovh/2025/03/25/yzF6A.jpeg">
+                    </div>
                     <h3 class="member-name">曾同学</h3>
                     <p class="member-role">机器人专业</p>
                     <p class="member-bio">曾获校级挑战杯优秀奖，拥有2项省创计划，掌握产品工艺技术的开发和利用。</p>
                 </div>
                 <div class="team-member">
-                    <div class="member-photo"></div>
+                    <div class="member-photo">
+                        <img src="https://i.imgs.ovh/2025/03/25/yzOHe.jpeg">
+                    </div>
                     <h3 class="member-name">高同学</h3>
                     <p class="member-role">小学教育专业</p>
                     <p class="member-bio">参与多项科研项目，具有良好的沟通能力和团队协作能力，负责项目宣传与推广。</p>
                 </div>
                 <div class="team-member">
-                    <div class="member-photo"></div>
-                    <h3 class="member-name">吴同学</h3>
-                    <p class="member-role">软件工程专业</p>
+                    <div class="member-photo">
+                        <img src="https://i.imgs.ovh/2025/03/25/yzZwa.jpeg">
+                    </div>
+                    <h3 class="member-name">汤同学</h3>
+                    <p class="member-role">生物科学专业</p>
                     <p class="member-bio">精通剪辑、wps等操作，从事程序的设计、应用与开发及系统维持，为项目提供技术支持。</p>
                 </div>
                 <div class="team-member">
-                    <div class="member-photo"></div>
+                    <div class="member-photo">
+                        <img src="https://i.imgs.ovh/2025/03/25/yzjSt.jpeg">
+                    </div>
                     <h3 class="member-name">付同学</h3>
                     <p class="member-role">生物工程专业</p>
                     <p class="member-bio">掌握生物材料研发技术，熟悉新产品开发流程，参与多项科研项目。</p>
@@ -750,51 +767,27 @@
                 <h3>指导老师</h3>
                 <div class="team-members" style="margin-top: 30px;">
                     <div class="team-member">
-                        <div class="member-photo"></div>
+                        <div class="member-photo">
+                            <img src="https://i.imgs.ovh/2025/03/25/yzcMq.jpeg">
+                        </div>
                         <h3 class="member-name">张晓娟</h3>
                         <p class="member-role">省级教学团队、校级重点学科主要成员。发表论文十余篇。参与国家级课题两项，省部级课题两项。
                         </p>
                     </div>
                     <div class="team-member">
-                        <div class="member-photo"></div>
+                        <div class="member-photo">
+                            <img src="https://i.imgs.ovh/2025/03/25/yzfGC.jpeg">
+                        </div>
                         <h3 class="member-name">张所轮</h3>
                         <p class="member-role">博士在读，研究方向：就业创业指导，教育管理，发表相关论文12篇，主持参与省市级项目11项。
                         </p>
                     </div>
                     <div class="team-member">
-                        <div class="member-photo"></div>
+                        <div class="member-photo">
+                            <img src="https://i.imgs.ovh/2025/03/25/yzvj4.png">
+                        </div>
                         <h3 class="member-name">郭莹</h3>
                         <p class="member-role">参编大学生职业规划与就业指导教材，发表期刊7篇，参与河南省就业创业课题5项，河南省社科联项目4项。
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div style="margin-top: 60px; text-align: center;">
-                <h3>专家顾问</h3>
-                <div class="team-members" style="margin-top: 30px;">
-                    <div class="team-member">
-                        <div class="member-photo"></div>
-                        <h3 class="member-name">徐甜甜</h3>
-                        <p class="member-role">DnA建筑事务所创始人，主持建筑师。清华大学建筑学院建筑学学士，哈佛大学设计研究学院建筑城市设计硕士；曾实践于国内多个建筑事务所。
-                        </p>
-                    </div>
-                    <div class="team-member">
-                        <div class="member-photo"></div>
-                        <h3 class="member-name">李丛笑</h3>
-                        <p class="member-role">DnA建筑事务所创始人，主持建筑师。清华大学建筑学院建筑学学士，哈佛大学设计研究学院建筑城市设计硕士；曾实践于国内多个建筑事务所。
-                        </p>
-                    </div>
-                    <div class="team-member">
-                        <div class="member-photo"></div>
-                        <h3 class="member-name">安文河</h3>
-                        <p class="member-role">从事基础设施项目技术管理，推行“策划驱动创效”模式，精准定位效益增长点。获得中建集团首个路桥项目鲁班奖、省部级科技进步奖5项。
-                        </p>
-                    </div>
-                    <div class="team-member">
-                        <div class="member-photo"></div>
-                        <h3 class="member-name">陈金友</h3>
-                        <p class="member-role">科技部自然评审专家，工信部赛迪研究院高级咨询师。主要从事“云大物智链安”在工业 4.0、环境等领域解决方案的规划与设计究。
                         </p>
                     </div>
                 </div>
@@ -891,10 +884,10 @@
                 </div>
                 <div class="footer-section">
                     <h3>合作伙伴</h3>
-                    <p>某科研机构</p>
-                    <p>某建筑集团</p>
-                    <p>某投资公司</p>
-                    <p>某高校实验室</p>
+                    <p>科研机构</p>
+                    <p>建筑集团</p>
+                    <p>投资公司</p>
+                    <p>高校实验室</p>
                 </div>
             </div>
             <div class="copyright">
